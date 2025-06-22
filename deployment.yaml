@@ -19,3 +19,18 @@ spec:
           image: wil42/playground:v1
           ports:
             - containerPort: 8888
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wil-playground-service
+  labels:
+    app: playground
+spec:
+  selector:
+    app: playground
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8888
+  type: ClusterIP
